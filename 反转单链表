@@ -1,0 +1,30 @@
+//题目描述
+//输入一个链表，反转链表后，输出链表的所有元素。
+
+/*
+struct ListNode {
+	int val;
+	struct ListNode *next;
+	ListNode(int x) :
+			val(x), next(NULL) {
+	}
+};*/
+class Solution {
+public:
+    ListNode* ReverseList(ListNode* pHead) {
+        if(pHead == NULL || pHead->next == NULL)
+            return pHead;
+        ListNode* a = pHead;
+        ListNode* b = a->next;
+        ListNode* c = b->next;
+        a->next = NULL;
+        while(b != NULL) {
+            b->next = a;
+            a = b;
+            b = c;
+            if(c != NULL)
+                c = c->next;
+        }
+        return a;
+    }
+};
